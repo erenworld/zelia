@@ -1,0 +1,22 @@
+{% form "cart", cart %}
+    <h1>Cart</h1>
+
+        {% if cart.empty? %}
+            <h3>Your carte is empty !</h3>
+        {% else %}
+            {% for item in cart.items %}
+                <div>
+                    <img src="{{ item.image | image_url: width: 300, height: 300 }}" width="300" height="300">
+                    <h2>{{ item.title }}</h2>
+                    <h1>{{ item.final_line_price  | money }}</h1>
+                    <input name="updates[]" value="{{ item.quantity }}">
+                    <a href="{{ item.url_to_remove }}">Remove</a>
+                </div>
+            {% endfor %}
+        <hr/>
+        <h2>Total: {{ cart.total_price | money }}</h2>
+    
+        <button type="submit" name="update">Update</button>
+        <button type="submit" name="checkout">Checkout</button>
+        {% endif %}
+{% endform %}
