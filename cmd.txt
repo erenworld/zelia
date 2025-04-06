@@ -1,4 +1,0 @@
-shopify theme pull --store=erlucrea
-shopify theme dev
-shopify theme push 
-npm install tailwindcss @tailwindcss/cli
